@@ -24,6 +24,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -59,8 +61,8 @@ public class BookListActivity extends AppCompatActivity {
                 new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        Intent i = new Intent(this, BookDetailActivity.class);
-                        i.putExtra("")
+                        Intent i = new Intent(recyclerView.getContext(), BookDetailActivity.class);
+                        i.putExtra("book", Parcels.wrap(abooks.get(position)));
                         startActivity(i);
                     }
                 }
